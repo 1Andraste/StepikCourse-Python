@@ -40,22 +40,17 @@ buf.get_current_part() # вернуть [1]
 
 ```
 class Buffer:
-    suma = 0
-    i = 0
 
     def __init__(self):
         self.lst = []
 
     def add(self, *a):
         self.lst += a
-        while len(self.lst) >= 5 or self.i > 0:
-            self.suma += self.lst[0]
-            self.lst.pop(0)
-            self.i += 1
-            if self.i == 5:
-                print(self.suma)
-                self.suma = 0
-                self.i = 0
+        while len(self.lst) >= 5:
+            print(sum(self.lst[0:5]))
+            for i in range(5):
+                self.lst.pop(0)
+
 
     def get_current_part(self):
         return self.lst
