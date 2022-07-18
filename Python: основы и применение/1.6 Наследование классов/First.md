@@ -77,5 +77,38 @@ No
 ```
 # Решение 
 
+```
+dct = {
+
+}
+
+
+def findParent(child, parent):
+    if parent not in dct.keys():
+        return False
+    else:
+        if parent == child:
+            return True
+        else:
+            if dct[parent]:
+                for i in dct[parent]:
+                    if findParent(child, i):
+                        return True
+            else:
+                return False
+
+
+for _ in range(0, int(input())):
+    new_class = input().strip().split()
+    dct[new_class[0]] = new_class[2:]
+
+
+for _ in range(0, int(input())):
+    parent_child = input().strip().split()
+    if findParent(parent_child[0], parent_child[1]):
+        print("Yes")
+    else:
+        print("No")
+   ```
 
 
